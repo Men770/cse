@@ -73,10 +73,18 @@
     </div>
     
     <script>
+    const observer = new MutationObserver(() => {
+        if(document.querySelector('.gs-per-result-labels')) {
+			     observer.disconnect();
+           $(".gs-per-result-labels >span:first-child").text("פורום:");
+        }
+    });
+    observer.observe(document, { attributes: true, childList: true, subtree: true });
+      
       
      $(document).on('mouseenter', '.gsc-results-wrapper-visible', function() {
-   hide();
-});
+       hide();
+     });
         
 jQuery.fn.cssImportant = function(name, value) {
   const $this = this;
